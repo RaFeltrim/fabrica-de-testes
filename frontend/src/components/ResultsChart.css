@@ -1,0 +1,129 @@
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.chart-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.chart-card h2 {
+  margin: 0 0 1.5rem 0;
+  color: #2d3748;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 2px solid #f7fafc;
+  padding-bottom: 0.75rem;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.doughnut-wrapper {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.bar-wrapper {
+  padding: 1rem 0;
+}
+
+.chart-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.center-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  line-height: 1;
+}
+
+.center-label {
+  font-size: 0.875rem;
+  color: #718096;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chart-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f7fafc;
+}
+
+.chart-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.stat-dot.passed {
+  background: rgba(67, 233, 123, 1);
+}
+
+.stat-dot.failed {
+  background: rgba(245, 87, 108, 1);
+}
+
+.stat-text {
+  font-size: 0.95rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.no-data-container {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #a0aec0;
+}
+
+.no-data-container svg {
+  margin-bottom: 1rem;
+}
+
+.no-data-container p {
+  margin: 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #718096;
+}
+
+.no-data-container span {
+  font-size: 0.875rem;
+  color: #a0aec0;
+}
+
+@media (max-width: 1024px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+}
