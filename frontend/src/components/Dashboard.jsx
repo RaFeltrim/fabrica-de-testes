@@ -19,6 +19,33 @@ const Dashboard = () => {
     status: 'idle' // idle, running, success, failed
   });
 
+  // Load filters from localStorage or use defaults
+  const loadFilters = () => {
+    const saved = localStorage.getItem('qadash-filters');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse saved filters:', e);
+      }
+    }
+    return {
+      dateRange: 'all', // 'all', 'today', 'week', 'month'
+      status: 'all', // 'all', 'passed', 'failed'
+      project: 'all',
+      framework: 'all',
+      startDate: '',
+      endDate: ''
+    };
+  };
+
+  const [filters, setFilters] = useState(loadFilters());
+
+  // Save filters to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('qadash-filters', JSON.stringify(filters));
+  }, [filters]);
+
   const fetchResults = async () => {
     try {
       setLoading(true);
@@ -45,6 +72,89 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Filter results based on current filter settings
+  const getFilteredResults = () => {
+    let filtered = [...results];
+
+    // Filter by date range
+    if (filters.dateRange !== 'all') {
+      const now = new Date();
+      let startDate;
+      
+      switch (filters.dateRange) {
+        case 'today':
+          startDate = new Date(now.setHours(0, 0, 0, 0));
+          break;
+        case 'week':
+          startDate = new Date(now.setDate(now.getDate() - 7));
+          break;
+        case 'month':
+          startDate = new Date(now.setMonth(now.getMonth() - 1));
+          break;
+        default:
+          startDate = null;
+      }
+      
+      if (startDate) {
+        filtered = filtered.filter(r => new Date(r.created_at) >= startDate);
+      }
+    }
+
+    // Filter by custom date range
+    if (filters.startDate && filters.endDate) {
+      const start = new Date(filters.startDate);
+      const end = new Date(filters.endDate);
+      end.setHours(23, 59, 59, 999); // Include the entire end date
+      
+      filtered = filtered.filter(r => {
+        const date = new Date(r.created_at);
+        return date >= start && date <= end;
+      });
+    }
+
+    // Filter by status
+    if (filters.status === 'passed') {
+      filtered = filtered.filter(r => r.failed === 0);
+    } else if (filters.status === 'failed') {
+      filtered = filtered.filter(r => r.failed > 0);
+    }
+
+    // Filter by project
+    if (filters.project !== 'all') {
+      filtered = filtered.filter(r => r.suite_name === filters.project);
+    }
+
+    // Filter by framework
+    if (filters.framework !== 'all') {
+      filtered = filtered.filter(r => r.framework === filters.framework);
+    }
+
+    return filtered;
+  };
+
+  const filteredResults = getFilteredResults();
+
+  // Get unique projects and frameworks for filter dropdowns
+  const uniqueProjects = [...new Set(results.map(r => r.suite_name))].sort();
+  const uniqueFrameworks = [...new Set(results.map(r => r.framework).filter(Boolean))].sort();
+
+  const updateFilter = (key, value) => {
+    setFilters(prev => ({ ...prev, [key]: value }));
+  };
+
+  const resetFilters = () => {
+    const defaultFilters = {
+      dateRange: 'all',
+      status: 'all',
+      project: 'all',
+      framework: 'all',
+      startDate: '',
+      endDate: ''
+    };
+    setFilters(defaultFilters);
+    localStorage.setItem('qadash-filters', JSON.stringify(defaultFilters));
   };
 
   useEffect(() => {
@@ -131,10 +241,100 @@ const Dashboard = () => {
       )}
 
       <div className="dashboard-content">
-        <ResultsChart results={results} />
-        <FailureAnalysis results={results} />
+        {/* Filter Panel */}
+        <div className="filter-panel">
+          <div className="filter-header">
+            <h3>🔍 Filters</h3>
+            <button className="reset-filters-btn" onClick={resetFilters}>
+              Reset Filters
+            </button>
+          </div>
+          
+          <div className="filter-grid">
+            {/* Date Range Quick Filter */}
+            <div className="filter-group">
+              <label>Date Range</label>
+              <select 
+                value={filters.dateRange} 
+                onChange={(e) => updateFilter('dateRange', e.target.value)}
+              >
+                <option value="all">All Time</option>
+                <option value="today">Today</option>
+                <option value="week">Last 7 Days</option>
+                <option value="month">Last 30 Days</option>
+              </select>
+            </div>
+
+            {/* Custom Date Range */}
+            <div className="filter-group">
+              <label>Start Date</label>
+              <input
+                type="date"
+                value={filters.startDate}
+                onChange={(e) => updateFilter('startDate', e.target.value)}
+              />
+            </div>
+
+            <div className="filter-group">
+              <label>End Date</label>
+              <input
+                type="date"
+                value={filters.endDate}
+                onChange={(e) => updateFilter('endDate', e.target.value)}
+              />
+            </div>
+
+            {/* Status Filter */}
+            <div className="filter-group">
+              <label>Status</label>
+              <select 
+                value={filters.status} 
+                onChange={(e) => updateFilter('status', e.target.value)}
+              >
+                <option value="all">All Tests</option>
+                <option value="passed">Passed Only</option>
+                <option value="failed">Failed Only</option>
+              </select>
+            </div>
+
+            {/* Project Filter */}
+            <div className="filter-group">
+              <label>Project</label>
+              <select 
+                value={filters.project} 
+                onChange={(e) => updateFilter('project', e.target.value)}
+              >
+                <option value="all">All Projects</option>
+                {uniqueProjects.map(project => (
+                  <option key={project} value={project}>{project}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Framework Filter */}
+            <div className="filter-group">
+              <label>Framework</label>
+              <select 
+                value={filters.framework} 
+                onChange={(e) => updateFilter('framework', e.target.value)}
+              >
+                <option value="all">All Frameworks</option>
+                {uniqueFrameworks.map(framework => (
+                  <option key={framework} value={framework}>{framework}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="filter-summary">
+            Showing {filteredResults.length} of {results.length} results
+          </div>
+        </div>
+
+        <ResultsChart results={filteredResults} />
+        <FailureAnalysis results={filteredResults} />
         <PipelineControls onPipelineRun={setLastPipelineRun} />
-        <ResultsList results={results} />
+        <ResultsList results={filteredResults} />
       </div>
 
       <footer className="dashboard-footer">
