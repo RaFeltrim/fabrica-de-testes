@@ -5,6 +5,7 @@ const exportController = require('../controllers/exportController');
 const failuresController = require('../controllers/failuresController');
 const trendsController = require('../controllers/trendsController');
 const scheduleController = require('../controllers/scheduleController');
+const webhookController = require('../controllers/webhookController');
 
 // GET all test results
 router.get('/results', resultsController.getAllResults);
@@ -35,5 +36,12 @@ router.get('/schedules', scheduleController.getScheduledJobs);
 router.post('/schedules', scheduleController.createScheduledJob);
 router.delete('/schedules/:id', scheduleController.deleteScheduledJob);
 router.post('/schedules/cleanup', scheduleController.cleanupOldExports);
+
+// Webhook endpoints for CI/CD integrations
+router.get('/webhooks', webhookController.getWebhookInfo);
+router.post('/webhooks/github', webhookController.handleGitHubWebhook);
+router.post('/webhooks/jenkins', webhookController.handleJenkinsWebhook);
+router.post('/webhooks/gitlab', webhookController.handleGitLabWebhook);
+router.post('/webhooks/generic', webhookController.handleGenericWebhook);
 
 module.exports = router;
