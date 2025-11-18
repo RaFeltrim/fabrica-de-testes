@@ -7,6 +7,7 @@ import FailureAnalysis from './FailureAnalysis';
 import LoadingSkeleton from './LoadingSkeleton';
 import ToastNotification from './ToastNotification';
 import ExportButton from './ExportButton';
+import TrendChart from './TrendChart';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -331,6 +332,7 @@ const Dashboard = () => {
           </div>
         </div>
 
+        <TrendChart />
         <ResultsChart results={filteredResults} />
         <FailureAnalysis results={filteredResults} />
         <PipelineControls onPipelineRun={setLastPipelineRun} />

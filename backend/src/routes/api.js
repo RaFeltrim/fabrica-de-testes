@@ -3,6 +3,7 @@ const router = express.Router();
 const resultsController = require('../controllers/resultsController');
 const exportController = require('../controllers/exportController');
 const failuresController = require('../controllers/failuresController');
+const trendsController = require('../controllers/trendsController');
 
 // GET all test results
 router.get('/results', resultsController.getAllResults);
@@ -18,5 +19,11 @@ router.get('/export/csv', exportController.exportToCSV);
 
 // GET top recurring failures
 router.get('/failures/top', failuresController.getTopFailures);
+
+// GET trend data (aggregated by time period)
+router.get('/trends', trendsController.getTrendData);
+
+// GET project-specific trends
+router.get('/trends/projects', trendsController.getProjectTrends);
 
 module.exports = router;
