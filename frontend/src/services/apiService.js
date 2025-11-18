@@ -3,9 +3,20 @@ import axios from 'axios';
 const API_BASE_URL = 'http://localhost:3001/api/v1';
 
 class ApiService {
-  async fetchResults() {
+  async fetchResults(dateRange = null) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/results`);
+      let url = `${API_BASE_URL}/results`;
+      
+      // Add date range parameters if provided
+      if (dateRange && dateRange.startDate && dateRange.endDate) {
+        const params = new URLSearchParams({
+          startDate: dateRange.startDate,
+          endDate: dateRange.endDate
+        });
+        url += `?${params.toString()}`;
+      }
+      
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
       console.error('Error fetching results:', error);
@@ -29,16 +40,6 @@ class ApiService {
       return response.data;
     } catch (error) {
       console.error('Error fetching result:', error);
-      throw error;
-    }
-  }
-
-  async fetchProjects() {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/projects`);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching projects:', error);
       throw error;
     }
   }

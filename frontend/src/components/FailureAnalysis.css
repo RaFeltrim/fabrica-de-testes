@@ -1,0 +1,132 @@
+.failure-analysis {
+  margin: 30px 0;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.failure-analysis h2 {
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.chart-container {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.failure-details {
+  margin-top: 25px;
+}
+
+.failure-details h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.failure-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.failure-details li {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.failure-details li:last-child {
+  border-bottom: none;
+}
+
+.error-count {
+  background: #e74c3c;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-right: 15px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.error-type {
+  font-weight: 500;
+  color: #2c3e50;
+  flex: 1;
+}
+
+.no-data, .no-failures {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.no-failures {
+  color: #27ae60;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .failure-analysis {
+    margin: 20px 0;
+    padding: 20px;
+  }
+  
+  .failure-analysis h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .chart-container {
+    padding: 15px;
+  }
+  
+  .failure-details h3 {
+    font-size: 1.1rem;
+  }
+  
+  .failure-details li {
+    padding: 10px;
+  }
+  
+  .error-count {
+    padding: 4px 10px;
+    margin-right: 10px;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .failure-analysis {
+    padding: 15px;
+  }
+  
+  .failure-analysis h2 {
+    font-size: 1.3rem;
+  }
+  
+  .chart-container {
+    padding: 10px;
+  }
+  
+  .failure-details li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .error-count {
+    margin-right: 0;
+  }
+}
