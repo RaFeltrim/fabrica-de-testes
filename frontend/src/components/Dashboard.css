@@ -327,3 +327,73 @@
     width: 100%;
   }
 }
+
+/* WebSocket Status Indicator */
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.websocket-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.websocket-status.connected {
+  background: rgba(46, 213, 115, 0.1);
+  color: #27ae60;
+  border: 2px solid rgba(46, 213, 115, 0.3);
+}
+
+.websocket-status.disconnected {
+  background: rgba(231, 76, 60, 0.1);
+  color: #c0392b;
+  border: 2px solid rgba(231, 76, 60, 0.3);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.websocket-status.connected .status-dot {
+  background: #27ae60;
+}
+
+.websocket-status.disconnected .status-dot {
+  background: #c0392b;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive WebSocket status */
+@media (max-width: 768px) {
+  .status-indicators {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .websocket-status {
+    width: 100%;
+    justify-content: center;
+  }
+}

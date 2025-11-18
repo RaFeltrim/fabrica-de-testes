@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import apiService from '../services/apiService';
+import socketService from '../services/socketService';
 import ResultsChart from './ResultsChart';
 import ResultsList from './ResultsList';
 import PipelineControls from './PipelineControls';
@@ -41,6 +42,7 @@ const Dashboard = () => {
   };
 
   const [filters, setFilters] = useState(loadFilters());
+  const [wsStatus, setWsStatus] = useState({ connected: false, message: '' });
 
   // Save filters to localStorage whenever they change
   useEffect(() => {
@@ -160,9 +162,44 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchResults();
-    // Refresh data every 30 seconds
+    
+    // Connect to WebSocket
+    socketService.connect();
+
+    // Listen for connection status changes
+    const unsubscribeStatus = socketService.on('connection-status', (data) => {
+      setWsStatus({
+        connected: data.status === 'connected',
+        message: data.status === 'connected' 
+          ? 'Real-time updates active' 
+          : 'Disconnected - Using polling'
+      });
+    });
+
+    // Listen for new test results
+    const unsubscribeResults = socketService.on('new-test-result', (data) => {
+      console.log('📡 New test result received via WebSocket');
+      // Refresh results when new data arrives
+      fetchResults();
+      
+      // Show notification
+      setToast({
+        message: `New test result: ${data.data.suite_name}`,
+        type: 'info',
+        duration: 5000
+      });
+    });
+
+    // Fallback: Refresh data every 30 seconds (in case WebSocket fails)
     const interval = setInterval(fetchResults, 30000);
-    return () => clearInterval(interval);
+
+    // Cleanup
+    return () => {
+      clearInterval(interval);
+      unsubscribeStatus();
+      unsubscribeResults();
+      socketService.disconnect();
+    };
   }, []);
 
   if (loading && results.length === 0) {
@@ -216,7 +253,11 @@ const Dashboard = () => {
             </button>
             <ExportButton />
           </div>
-          <div className="pipeline-status">
+          <div className="status-indicators">
+            <div className={`websocket-status ${wsStatus.connected ? 'connected' : 'disconnected'}`}>
+              <span className="status-dot"></span>
+              <span className="status-text">{wsStatus.message || 'Connecting...'}</span>
+            </div>
             {lastPipelineRun.timestamp && (
               <div className={`pipeline-indicator ${lastPipelineRun.status}`}>
                 <span className="status-icon">
