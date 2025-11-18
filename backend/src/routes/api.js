@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const resultsController = require('../controllers/resultsController');
-const projectScanner = require('../services/projectScanner');
+const exportController = require('../controllers/exportController');
+const failuresController = require('../controllers/failuresController');
 
 // GET all test results
 router.get('/results', resultsController.getAllResults);
@@ -12,22 +13,10 @@ router.get('/results/:id', resultsController.getResultById);
 // POST new test result
 router.post('/results', resultsController.createResult);
 
-// GET detected projects from Projetos folder
-router.get('/projects', (req, res) => {
-  try {
-    const projects = projectScanner.getProjectList();
-    res.status(200).json({
-      message: 'Projects scanned successfully',
-      count: projects.length,
-      data: projects
-    });
-  } catch (error) {
-    console.error('Error scanning projects:', error);
-    res.status(500).json({
-      error: 'Failed to scan projects',
-      message: error.message
-    });
-  }
-});
+// Export to CSV
+router.get('/export/csv', exportController.exportToCSV);
+
+// GET top recurring failures
+router.get('/failures/top', failuresController.getTopFailures);
 
 module.exports = router;

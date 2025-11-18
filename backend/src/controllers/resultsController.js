@@ -3,7 +3,18 @@ const dbService = require('../services/dbService');
 class ResultsController {
   async createResult(req, res) {
     try {
-      const { suite_name, total, passed, failed } = req.body;
+      const { 
+        suite_name, 
+        total, 
+        passed, 
+        failed,
+        framework = 'Unknown',
+        test_type = 'Functional',
+        error_details,
+        error_type,
+        error_message,
+        project_category
+      } = req.body;
 
       // Validation
       if (!suite_name || total === undefined || passed === undefined || failed === undefined) {
@@ -24,7 +35,13 @@ class ResultsController {
         suite_name,
         total,
         passed,
-        failed
+        failed,
+        framework,
+        test_type,
+        error_details,
+        error_type,
+        error_message,
+        project_category
       });
 
       res.status(201).json({
@@ -42,7 +59,16 @@ class ResultsController {
 
   async getAllResults(req, res) {
     try {
-      const results = await dbService.getAllResults();
+      const { startDate, endDate } = req.query;
+      
+      let query = dbService.getAllResults();
+      
+      // Apply date range filter if provided
+      if (startDate && endDate) {
+        query = dbService.getResultsByDateRange(startDate, endDate);
+      }
+      
+      const results = await query;
       
       res.status(200).json({
         message: 'Results retrieved successfully',
