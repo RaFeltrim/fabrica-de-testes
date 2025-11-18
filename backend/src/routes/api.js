@@ -4,6 +4,7 @@ const resultsController = require('../controllers/resultsController');
 const exportController = require('../controllers/exportController');
 const failuresController = require('../controllers/failuresController');
 const trendsController = require('../controllers/trendsController');
+const scheduleController = require('../controllers/scheduleController');
 
 // GET all test results
 router.get('/results', resultsController.getAllResults);
@@ -28,5 +29,11 @@ router.get('/trends', trendsController.getTrendData);
 
 // GET project-specific trends
 router.get('/trends/projects', trendsController.getProjectTrends);
+
+// Scheduled exports management
+router.get('/schedules', scheduleController.getScheduledJobs);
+router.post('/schedules', scheduleController.createScheduledJob);
+router.delete('/schedules/:id', scheduleController.deleteScheduledJob);
+router.post('/schedules/cleanup', scheduleController.cleanupOldExports);
 
 module.exports = router;

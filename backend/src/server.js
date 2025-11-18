@@ -1,6 +1,7 @@
 const app = require('./app');
 const http = require('http');
 const { Server } = require('socket.io');
+const scheduledExportService = require('./services/scheduledExportService');
 
 const PORT = process.env.PORT || 3001;
 
@@ -39,4 +40,9 @@ server.listen(PORT, () => {
   console.log(`📊 Health check: http://localhost:${PORT}/health`);
   console.log(`📡 API endpoint: http://localhost:${PORT}/api/v1/results`);
   console.log(`🔌 WebSocket server is running`);
+  
+  // Initialize scheduled export jobs
+  console.log(`📅 Initializing scheduled export jobs...`);
+  scheduledExportService.initializeDefaultJobs();
+  console.log(`✅ Scheduled export service initialized`);
 });
