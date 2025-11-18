@@ -17,6 +17,9 @@ router.post('/results', resultsController.createResult);
 // Export to CSV
 router.get('/export/csv', exportController.exportToCSV);
 
+// Export to PDF
+router.get('/export/pdf', exportController.exportToPDF);
+
 // GET top recurring failures
 router.get('/failures/top', failuresController.getTopFailures);
 
