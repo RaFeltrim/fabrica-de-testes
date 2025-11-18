@@ -3,15 +3,17 @@ import './ExportButton.css';
 
 const ExportButton = () => {
   const [isExporting, setIsExporting] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
-  const handleExport = async () => {
+  const handleExport = async (format) => {
     try {
       setIsExporting(true);
+      setShowMenu(false);
       
       // Create a temporary link to trigger the download
       const link = document.createElement('a');
-      link.href = 'http://localhost:3001/api/v1/export/csv';
-      link.download = 'qadash-report.csv';
+      link.href = `http://localhost:3001/api/v1/export/${format}`;
+      link.download = `qadash-report.${format}`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -27,13 +29,32 @@ const ExportButton = () => {
   };
 
   return (
-    <button 
-      className="export-btn" 
-      onClick={handleExport}
-      disabled={isExporting}
-    >
-      {isExporting ? '📥 Exporting...' : '📥 Export to CSV'}
-    </button>
+    <div className="export-button-container">
+      <button 
+        className="export-btn" 
+        onClick={() => setShowMenu(!showMenu)}
+        disabled={isExporting}
+      >
+        {isExporting ? '📥 Exporting...' : '📥 Export Report'}
+      </button>
+      
+      {showMenu && !isExporting && (
+        <div className="export-menu">
+          <button 
+            className="export-option"
+            onClick={() => handleExport('csv')}
+          >
+            📊 Export as CSV
+          </button>
+          <button 
+            className="export-option"
+            onClick={() => handleExport('pdf')}
+          >
+            📄 Export as PDF
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 

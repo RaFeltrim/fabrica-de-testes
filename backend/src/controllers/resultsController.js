@@ -44,6 +44,17 @@ class ResultsController {
         project_category
       });
 
+      // Emit WebSocket event to all connected clients
+      const io = req.app.get('io');
+      if (io) {
+        io.emit('new-test-result', {
+          type: 'new-result',
+          data: result,
+          timestamp: new Date().toISOString()
+        });
+        console.log('📡 WebSocket: Broadcasted new test result');
+      }
+
       res.status(201).json({
         message: 'Test result saved successfully',
         data: result
