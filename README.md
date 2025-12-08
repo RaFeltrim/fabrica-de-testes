@@ -1,27 +1,27 @@
 # QADash - Professional Test Automation Dashboard
 
-## 📊 About the Project
+## About the Project
 
 QADash is a **professional-grade SaaS dashboard** designed for QA engineers and freelancers to manage multiple projects and centralize test automation results from ANY testing framework (Robot Framework, Cypress, Playwright, Jest, Vitest, etc.).
 
 **Main Function**: Centralize and visualize automated test results from ALL your projects in a single, professional dashboard.
 
-### ✨ Recent Improvements (November 2025)
+### Recent Improvements (November 2025)
 
-🎨 **Complete UI Redesign**
+**Complete UI Redesign**
 - Modern, professional interface (no more "AI-generated" look)
 - Clean design with gradient accents
 - SVG icons instead of emojis
 - Fully responsive layout
 
-📊 **Enhanced Data Visualization**
+**Enhanced Data Visualization**
 - 4 key metric cards with real-time stats
 - Dual chart system (Doughnut + Bar chart)
 - Project-wise comparison view
 - Color-coded progress bars
 - Historical trend analysis with time-series charts
 
-🔍 **Advanced Features**
+**Advanced Features**
 - Advanced filtering with persistence (date range, project, framework, status)
 - Sort by date, project, or success rate
 - Visual status badges
@@ -29,60 +29,60 @@ QADash is a **professional-grade SaaS dashboard** designed for QA engineers and 
 - Real-time WebSocket updates
 - Export to CSV and PDF with professional templates
 
-⚡ **Real-Time Updates**
+**Real-Time Updates**
 - WebSocket integration for instant dashboard updates
 - Connection status indicator with pulse animation
 - Toast notifications for new test results
 - Automatic refresh every 30 seconds as fallback
 
-📤 **Export & Reporting**
+**Export & Reporting**
 - CSV export with detailed test data
 - PDF reports with executive summary and charts
 - Scheduled exports (daily/weekly/monthly)
 - Automatic cleanup of old exports
 
-🔗 **CI/CD Integration**
+**CI/CD Integration**
 - GitHub Actions webhook support
 - Jenkins integration
 - GitLab CI webhook endpoint
 - Generic webhook for custom CI/CD platforms
 - Signature verification for security
 
-### 🎯 MVP - Module 4: Automation Dashboard
+### MVP - Module 4: Automation Dashboard
 
 This MVP focuses on the core "killer feature": receiving automated test results and displaying them in a real-time professional dashboard.
 
-## 🚀 Key Features
+## Key Features
 
-### 📊 Dashboard & Visualization
+### Dashboard & Visualization
 - **Real-time Metrics**: 4 key metric cards (executions, projects, total tests, success rate)
 - **Multiple Chart Types**: Doughnut chart, bar chart, and historical trend line charts
 - **Advanced Filtering**: Filter by date range, project, framework, and status
 - **Filter Persistence**: Filters saved in localStorage for better UX
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
 
-### 📈 Historical Analysis
+### Historical Analysis
 - **Trend Visualization**: View test results trends over time
 - **Flexible Grouping**: Group data by hour, day, week, or month
 - **Customizable Time Ranges**: View trends for 7, 14, 30, 60, or 90 days
 - **Project Comparison**: Compare performance across different projects
 - **Dual-axis Charts**: See pass rates and test counts simultaneously
 
-### ⚡ Real-Time Features
+### Real-Time Features
 - **WebSocket Integration**: Instant dashboard updates when new results arrive
 - **Connection Status**: Visual indicator showing real-time connection status
 - **Toast Notifications**: Alerts for new test results
 - **Auto-refresh**: Fallback polling every 30 seconds
 - **Live Updates**: See changes as they happen without manual refresh
 
-### 📤 Export & Reporting
+### Export & Reporting
 - **Multiple Formats**: Export as CSV or PDF
 - **Professional PDF Reports**: Executive summary with charts and statistics
 - **Scheduled Exports**: Set up daily, weekly, or monthly automated reports
 - **Custom Schedules**: Use cron expressions for flexible scheduling
 - **Auto-cleanup**: Automatically remove old export files
 
-### 🔗 CI/CD Integration
+### CI/CD Integration
 - **GitHub Actions**: Direct webhook integration
 - **Jenkins Support**: Build notification webhooks
 - **GitLab CI**: Pipeline event webhooks
@@ -90,13 +90,13 @@ This MVP focuses on the core "killer feature": receiving automated test results 
 - **Security**: HMAC signature verification for GitHub, token auth for others
 - **Automatic Ingestion**: Test results automatically added to dashboard
 
-### 🔍 Failure Analysis
+### Failure Analysis
 - **Top Failures**: Visualize most common failure types
 - **Error Clustering**: Group similar errors together
 - **Trend Analysis**: See how failure rates change over time
 - **Detailed Reports**: Export failure analysis to PDF
 
-## 🏗️ Arquitetura
+## Architecture
 
 ```
 qadash-mvp/
@@ -119,7 +119,7 @@ qadash-mvp/
     └── run_tests.bat     # Script de execução
 ```
 
-## 🛠️ Stack Tecnológica
+## Technology Stack
 
 - **Backend**: Node.js, Express, SQLite, Knex.js, Socket.IO, PDFKit, Node-Cron
 - **Frontend**: React, Vite, Chart.js, Axios, Socket.IO Client
@@ -128,7 +128,7 @@ qadash-mvp/
 - **Real-time**: WebSocket (Socket.IO)
 - **Security**: HMAC signature verification, token authentication
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables (Optional)
 
@@ -166,7 +166,7 @@ To set up webhooks in your CI/CD platform:
    - Secret Token: (your GITLAB_WEBHOOK_TOKEN)
    - Trigger: Pipeline events
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Easy Way (Recommended)
 Double-click `start-qadash.bat` in the project root - it will:
@@ -181,7 +181,7 @@ Double-click `start-qadash.bat` in the project root - it will:
 - Node.js 18+
 - Python 3.8+ (optional, for Robot Framework integration)
 
-#### 1️⃣ Backend
+#### Backend Setup
 ```bash
 cd backend
 npm install
@@ -190,7 +190,7 @@ npm run dev
 ```
 O backend estará rodando em: **http://localhost:3001**
 
-### 2️⃣ Frontend
+### Frontend Setup
 ```bash
 cd frontend
 npm install
@@ -198,13 +198,13 @@ npm run dev
 ```
 O dashboard estará disponível em: **http://localhost:5173**
 
-### 3️⃣ Automação (Exemplo)
+### Automation Setup (Example)
 ```bash
 cd automation-scripts
 pip install -r requirements.txt
 ```
 
-## 🎯 Como Usar - Integrando com SEU Projeto
+## Usage Guide - Integrating with Your Project
 
 ### Opção 1: Robot Framework
 
@@ -241,7 +241,7 @@ Crie um script customizado que parse seus resultados e envie para:
 - **Endpoint**: `POST http://localhost:3001/api/v1/results`
 - **Body**: `{ suite_name, total, passed, failed }`
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Test Results
 
@@ -424,7 +424,7 @@ Generic webhook endpoint for custom integrations
 }
 ```
 
-## 🧪 Testando o Sistema (End-to-End)
+## Testing the System (End-to-End)
 
 ### Teste Rápido - Envio Manual
 ```bash
@@ -447,12 +447,12 @@ run_tests.bat
 ```
 
 Isto irá:
-1. ✅ Executar os testes do `saucedemo.robot`
-2. ✅ Parsear o `output.xml`
-3. ✅ Enviar resultados para o QADash
-4. ✅ Atualizar o dashboard automaticamente
+1. Execute the tests from `saucedemo.robot`
+2. Parse the `output.xml`
+3. Send results to QADash
+4. Update the dashboard automatically
 
-## 📚 Advanced Usage Examples
+## Advanced Usage Examples
 
 ### Setting Up Scheduled Reports
 
@@ -571,7 +571,7 @@ test:
         }"
 ```
 
-## 📊 Dashboard - Features
+## Dashboard Features
 
 ### Modern Professional Design
 - **4 Key Metric Cards**:
@@ -611,48 +611,48 @@ test:
   - Category tags for project classification
 
 ### Real-time Updates
-- ⚡ **WebSocket Connection**: Live updates without refresh
-- 🔌 **Connection Status**: Visual pulse indicator showing connection state
-- 🔔 **Toast Notifications**: Alerts when new test results arrive
-- 🔄 **Auto-refresh**: Fallback polling every 30 seconds
-- 🔘 **Manual refresh**: Button in header
-- ⏱️ **Last update timestamp**: Always visible
+- **WebSocket Connection**: Live updates without refresh
+- **Connection Status**: Visual pulse indicator showing connection state
+- **Toast Notifications**: Alerts when new test results arrive
+- **Auto-refresh**: Fallback polling every 30 seconds
+- **Manual refresh**: Button in header
+- **Last update timestamp**: Always visible
 
 ### Export Capabilities
-- 📥 **CSV Export**: Download data as spreadsheet
-- 📄 **PDF Reports**: Professional reports with charts and statistics
-- 📅 **Scheduled Exports**: Automated daily/weekly/monthly reports
-- 🧹 **Auto-cleanup**: Old exports automatically removed
+- **CSV Export**: Download data as spreadsheet
+- **PDF Reports**: Professional reports with charts and statistics
+- **Scheduled Exports**: Automated daily/weekly/monthly reports
+- **Auto-cleanup**: Old exports automatically removed
 
 ### Responsive Design
-- 💻 Desktop optimized (full feature set)
-- 📱 Tablet friendly (adapted layouts)
-- 📱 Mobile compatible (touch-optimized)
-- 🎨 **Visual Profissional**: Cores indicativas (verde=passou, vermelho=falhou)
-- 🌐 **Cross-browser**: Works on Chrome, Firefox, Safari, Edge
+- Desktop optimized (full feature set)
+- Tablet friendly (adapted layouts)
+- Mobile compatible (touch-optimized)
+- **Professional Visual Design**: Color-coded indicators (green=passed, red=failed)
+- **Cross-browser**: Works on Chrome, Firefox, Safari, Edge
 
-## 🎓 Casos de Uso
+## Use Cases
 
-### Para QAs Freelancers na Workana:
-1. **Múltiplos Clientes**: Cada suite de teste pode representar um cliente diferente
-2. **Relatórios Profissionais**: Mostre o dashboard para o cliente
-3. **Histórico**: Acompanhe a evolução da qualidade ao longo do tempo
-4. **Produtividade**: Centralize resultados de Robot, Cypress, Jest, etc.
+### For QA Freelancers on Workana:
+1. **Multiple Clients**: Each test suite can represent a different client
+2. **Professional Reports**: Show the dashboard to clients
+3. **Historical Data**: Track quality evolution over time
+4. **Productivity**: Centralize results from Robot, Cypress, Jest, etc.
 
-### Para Projetos de Portfólio:
-- ✅ Demonstra conhecimento em Full-Stack
-- ✅ Mostra domínio de automação de testes
-- ✅ Prova capacidade de integração de sistemas
-- ✅ Evidencia visão de produto (SaaS)
+### For Portfolio Projects:
+- Demonstrates Full-Stack knowledge
+- Shows test automation expertise
+- Proves system integration capability
+- Evidences product vision (SaaS)
 
-## 🛠️ Desenvolvido por Rafael Feltrim
+## Developed by Rafael Feltrim
 
 **Contato**: rafeltrim@gmail.com
 
-Este projeto demonstra competências em:
-- ✅ Engenharia de Software Full-Stack (React + Node.js)
-- ✅ QA Manual e Automação (Robot Framework)
-- ✅ Integração de Ferramentas de Teste
-- ✅ API REST e Visualização de Dados
-- ✅ Banco de Dados (SQLite + Knex.js)
-- ✅ DevOps e CI/CD readiness
+This project demonstrates competencies in:
+- Full-Stack Software Engineering (React + Node.js)
+- Manual QA and Automation (Robot Framework)
+- Test Tool Integration
+- REST API and Data Visualization
+- Database Management (SQLite + Knex.js)
+- DevOps and CI/CD readiness
