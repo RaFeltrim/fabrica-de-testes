@@ -1,4 +1,4 @@
-# 🚀 Quick Start Guide - Using QADash with ANY Project
+# Quick Start Guide - Using QADash with ANY Project
 
 ## Goal
 QADash is your centralized dashboard for test results from **any testing framework**.
@@ -22,7 +22,7 @@ Dashboard will be at: **http://localhost:5173**
 
 ## Usage Scenarios
 
-### ✅ Scenario 1: Robot Framework Project
+### Scenario 1: Robot Framework Project
 ```bash
 # In your Robot project directory
 robot --outputdir ./results my_tests.robot
@@ -34,7 +34,7 @@ cp path/to/qadash/automation-scripts/post_results.py .
 python post_results.py
 ```
 
-### ✅ Scenario 2: Jest/Vitest Project
+### Scenario 2: Jest/Vitest Project
 Use the generic sender:
 ```bash
 # After running tests, get your results (e.g., 50 total, 48 passed, 2 failed)
@@ -43,13 +43,13 @@ python path/to/send_to_qadash.py "My App Tests" 50 48 2
 
 Or copy `examples/jest-qadash-reporter.js` to your project.
 
-### ✅ Scenario 3: Cypress Project
+### Scenario 3: Cypress Project
 ```bash
 # After Cypress run, extract results and send:
 python path/to/send_to_qadash.py "Cypress E2E - Cliente X" 30 28 2
 ```
 
-### ✅ Scenario 4: Postman/Newman
+### Scenario 4: Postman/Newman
 ```bash
 # Run Newman with JSON reporter
 newman run collection.json --reporters json
@@ -58,7 +58,7 @@ newman run collection.json --reporters json
 python path/to/send_to_qadash.py "API Tests" 100 95 5
 ```
 
-### ✅ Scenario 5: Any Framework (Manual)
+### Scenario 5: Any Framework (Manual)
 Just send a POST request:
 ```bash
 curl -X POST http://localhost:3001/api/v1/results \
@@ -120,7 +120,7 @@ Add the curl command to your pipeline:
 
 ## Next Steps
 
-1. ✅ Integrate with your current test projects
-2. ✅ Customize suite names for different clients
-3. ✅ Add to your CI/CD pipeline
-4. ✅ Show the dashboard to clients for status reports
+1. Integrate with your current test projects
+2. Customize suite names for different clients
+3. Add to your CI/CD pipeline
+4. Show the dashboard to clients for status reports
