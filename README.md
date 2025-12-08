@@ -100,23 +100,23 @@ This MVP focuses on the core "killer feature": receiving automated test results 
 
 ```
 qadash-mvp/
-├── backend/              # API REST com Node.js + Express
+├── backend/              # REST API with Node.js + Express
 │   ├── src/
-│   │   ├── controllers/  # Lógica de controle (resultsController.js)
-│   │   ├── routes/       # Rotas da API (api.js)
-│   │   ├── services/     # Serviços de DB (dbService.js)
-│   │   ├── app.js        # Configuração Express
-│   │   └── server.js     # Servidor HTTP
-│   └── database/         # SQLite DB e migrations
-├── frontend/             # Dashboard React + Vite
+│   │   ├── controllers/  # Control logic (resultsController.js)
+│   │   ├── routes/       # API routes (api.js)
+│   │   ├── services/     # DB services (dbService.js)
+│   │   ├── app.js        # Express configuration
+│   │   └── server.js     # HTTP server
+│   └── database/         # SQLite DB and migrations
+├── frontend/             # React Dashboard + Vite
 │   └── src/
 │       ├── components/   # Dashboard, ResultsChart, ResultsList
 │       ├── services/     # apiService.js
 │       └── App.jsx
-└── automation-scripts/   # Scripts Robot Framework (EXEMPLO)
-    ├── tests/            # Seus testes Robot (saucedemo.robot)
-    ├── post_results.py   # Script para enviar resultados ao QADash
-    └── run_tests.bat     # Script de execução
+└── automation-scripts/   # Robot Framework scripts (EXAMPLE)
+    ├── tests/            # Your Robot tests (saucedemo.robot)
+    ├── post_results.py   # Script to send results to QADash
+    └── run_tests.bat     # Execution script
 ```
 
 ## Technology Stack
@@ -188,7 +188,7 @@ npm install
 npm run migrate
 npm run dev
 ```
-O backend estará rodando em: **http://localhost:3001**
+The backend will be running at: **http://localhost:3001**
 
 ### Frontend Setup
 ```bash
@@ -196,7 +196,7 @@ cd frontend
 npm install
 npm run dev
 ```
-O dashboard estará disponível em: **http://localhost:5173**
+The dashboard will be available at: **http://localhost:5173**
 
 ### Automation Setup (Example)
 ```bash
@@ -206,38 +206,38 @@ pip install -r requirements.txt
 
 ## Usage Guide - Integrating with Your Project
 
-### Opção 1: Robot Framework
+### Option 1: Robot Framework
 
-1. **Execute seus testes Robot Framework** (em qualquer projeto):
+1. **Run your Robot Framework tests** (in any project):
 ```bash
-robot --outputdir ./results meus_testes.robot
+robot --outputdir ./results my_tests.robot
 ```
 
-2. **Copie o script `post_results.py`** para o diretório dos seus resultados
+2. **Copy the `post_results.py` script** to your results directory
 
-3. **Execute o script** para enviar ao QADash:
+3. **Run the script** to send to QADash:
 ```bash
 python post_results.py
 ```
 
-### Opção 2: Qualquer Framework (via API)
+### Option 2: Any Framework (via API)
 
-Envie uma requisição POST para a API do QADash:
+Send a POST request to the QADash API:
 
 ```bash
 curl -X POST http://localhost:3001/api/v1/results \
   -H "Content-Type: application/json" \
   -d '{
-    "suite_name": "Meus Testes de API",
+    "suite_name": "My API Tests",
     "total": 25,
     "passed": 23,
     "failed": 2
   }'
 ```
 
-### Opção 3: Integração com Jest/Cypress/etc
+### Option 3: Jest/Cypress/etc Integration
 
-Crie um script customizado que parse seus resultados e envie para:
+Create a custom script that parses your results and sends to:
 - **Endpoint**: `POST http://localhost:3001/api/v1/results`
 - **Body**: `{ suite_name, total, passed, failed }`
 
@@ -246,7 +246,7 @@ Crie um script customizado que parse seus resultados e envie para:
 ### Test Results
 
 #### POST /api/v1/results
-Recebe resultados de testes
+Receives test results
 
 **Request Body**:
 ```json
@@ -276,7 +276,7 @@ Recebe resultados de testes
 ```
 
 #### GET /api/v1/results
-Retorna todos os resultados salvos
+Returns all saved results
 
 **Query Parameters**:
 - `startDate`: Filter by start date (ISO format)
@@ -426,27 +426,27 @@ Generic webhook endpoint for custom integrations
 
 ## Testing the System (End-to-End)
 
-### Teste Rápido - Envio Manual
+### Quick Test - Manual Submission
 ```bash
-# Terminal 1: Backend rodando
+# Terminal 1: Backend running
 cd backend && npm run dev
 
-# Terminal 2: Frontend rodando  
+# Terminal 2: Frontend running  
 cd frontend && npm run dev
 
-# Terminal 3: Enviar resultado de teste
+# Terminal 3: Send test result
 curl -X POST http://localhost:3001/api/v1/results \
   -H "Content-Type: application/json" \
-  -d '{"suite_name":"Teste Manual","total":5,"passed":4,"failed":1}'
+  -d '{"suite_name":"Manual Test","total":5,"passed":4,"failed":1}'
 ```
 
-### Teste com Robot Framework (Exemplo incluído)
+### Test with Robot Framework (Example Included)
 ```bash
 cd automation-scripts
 run_tests.bat
 ```
 
-Isto irá:
+This will:
 1. Execute the tests from `saucedemo.robot`
 2. Parse the `output.xml`
 3. Send results to QADash
@@ -647,7 +647,7 @@ test:
 
 ## Developed by Rafael Feltrim
 
-**Contato**: rafeltrim@gmail.com
+**Contact**: rafeltrim@gmail.com
 
 This project demonstrates competencies in:
 - Full-Stack Software Engineering (React + Node.js)
