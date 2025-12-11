@@ -645,11 +645,34 @@ test:
 - Proves system integration capability
 - Evidences product vision (SaaS)
 
+## 📚 Documentation
+
+### Project Documentation
+
+- **[docs/integrations.md](docs/integrations.md)** - Complete guide to integrations with testing frameworks (Playwright, Jest, Robot Framework)
+- **[docs/adr/](docs/adr/)** - Architecture Decision Records (ADRs) explaining technical choices
+- **[automation-scripts/README.md](automation-scripts/README.md)** - Automation scripts organization and usage
+- **[backend/README.md](backend/README.md)** - Backend API documentation
+- **[frontend/README.md](frontend/README.md)** - Frontend development guide
+
+### Testing Documentation
+
+- **[docs/testing/](docs/testing/)** - Comprehensive testing guides and strategies
+- **[docs/testing/shift-left-testing/](docs/testing/shift-left-testing/)** - Shift Left Testing methodology
+- **[docs/testing/casos-teste-realistas.md](docs/testing/casos-teste-realistas.md)** - Realistic test cases examples
+
+### Development Guides
+
+- **[docs/guides/](docs/guides/)** - Development guides and references
+- **[docs/guides/guia-implementacao.md](docs/guides/guia-implementacao.md)** - Implementation guide
+- **[docs/guides/guia-completo-cnpj.md](docs/guides/guia-completo-cnpj.md)** - CNPJ validation guide
+
 ## Developed by Rafael Feltrim
 
-**Contact**: rafeltrim@gmail.com
+**Contact**: `rafeltrim@gmail.com`
 
 This project demonstrates competencies in:
+
 - Full-Stack Software Engineering (React + Node.js)
 - Manual QA and Automation (Robot Framework)
 - Test Tool Integration
