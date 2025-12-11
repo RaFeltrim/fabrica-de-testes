@@ -249,9 +249,19 @@ class WebhookController {
    * Verify GitHub webhook signature
    */
   verifyGitHubSignature(payload, signature, secret) {
-    const hmac = crypto.createHmac('sha256', secret);
-    const digest = 'sha256=' + hmac.update(JSON.stringify(payload)).digest('hex');
-    return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
+    try {
+      const hmac = crypto.createHmac('sha256', secret);
+      const digest = 'sha256=' + hmac.update(JSON.stringify(payload)).digest('hex');
+      
+      // timingSafeEqual throws if buffers have different lengths
+      if (signature.length !== digest.length) {
+        return false;
+      }
+      
+      return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
+    } catch (error) {
+      return false;
+    }
   }
 
   /**
