@@ -10,7 +10,7 @@ class QADashReporter implements Reporter {
     console.log('📤 Enviando resultados para o QADash...');
 
     try {
-      await axios.post('http://localhost:3001/api/v1/results', {
+      await axios.post('http://localhost:3000/api/v1/results', {
         suite_name: "Playwright Self-Test",
         total: total,
         passed: passed,

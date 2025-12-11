@@ -7,7 +7,7 @@ class SocketService {
     this.isConnected = false;
   }
 
-  connect(url = 'http://localhost:3001') {
+  connect(url = 'http://localhost:3000') {
     if (this.socket) {
       console.log('Socket already connected');
       return;

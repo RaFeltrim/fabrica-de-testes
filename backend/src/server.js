@@ -3,7 +3,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const scheduledExportService = require('./services/scheduledExportService');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Create HTTP server
 const server = http.createServer(app);
