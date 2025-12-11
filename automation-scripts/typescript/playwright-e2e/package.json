@@ -1,0 +1,16 @@
+{
+"name": "qadash-e2e-tests",
+"version": "1.0.0",
+"scripts": {
+"test": "npx playwright test",
+"codegen": "npx playwright codegen http://localhost:5173"
+},
+"devDependencies": {
+"@playwright/test": "^1.40.0",
+"@types/node": "^20.0.0",
+"typescript": "^5.0.0"
+},
+"dependencies": {
+"axios": "^1.6.0"
+}
+}

@@ -1,4 +1,0 @@
-robotframework>=6.1.1
-robotframework-seleniumlibrary>=6.1.0
-selenium>=4.15.0
-requests>=2.31.0

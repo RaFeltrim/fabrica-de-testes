@@ -9,7 +9,7 @@ echo.
 
 REM Run Robot Framework tests
 echo [1/2] Executing Robot Framework tests...
-robot --outputdir . tests\saucedemo.robot
+robot --outputdir . ..\examples\robot-framework\tests\saucedemo.robot
 
 REM Check if tests executed successfully
 if %ERRORLEVEL% EQU 0 (
@@ -22,7 +22,7 @@ if %ERRORLEVEL% EQU 0 (
 
 echo.
 echo [2/2] Posting results to QADash API...
-python post_results.py
+python scripts\post_results.py
 
 echo.
 echo ============================================
