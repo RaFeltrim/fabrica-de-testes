@@ -1,0 +1,381 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - heading "🎯 QA Environment - Production Monitor" [level=1] [ref=e8]
+        - paragraph [ref=e9]: Enterprise Test Automation Dashboard
+      - generic [ref=e10]: Production
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - button "🔄 Refresh Data" [ref=e13] [cursor=pointer]
+        - button "📥 Export Report" [ref=e15] [cursor=pointer]
+      - generic [ref=e19]: Real-time updates active
+      - generic [ref=e20]: "Last update: 12/11/2025, 2:37:00 PM"
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - heading "🔍 Filters" [level=3] [ref=e24]
+        - button "Reset Filters" [ref=e25] [cursor=pointer]
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]: Date Range
+          - combobox [ref=e29]:
+            - option "All Time" [selected]
+            - option "Today"
+            - option "Last 7 Days"
+            - option "Last 30 Days"
+        - generic [ref=e30]:
+          - generic [ref=e31]: Start Date
+          - textbox [ref=e32]
+        - generic [ref=e33]:
+          - generic [ref=e34]: End Date
+          - textbox [ref=e35]
+        - generic [ref=e36]:
+          - generic [ref=e37]: Status
+          - combobox [ref=e38]:
+            - option "All Tests" [selected]
+            - option "Passed Only"
+            - option "Failed Only"
+        - generic [ref=e39]:
+          - generic [ref=e40]: Project
+          - combobox [ref=e41]:
+            - option "All Projects" [selected]
+            - option "API Integration"
+            - option "Checkout Flow"
+            - option "Dashboard UI"
+            - option "Inventory Tests"
+            - option "Login Tests"
+            - option "Playwright Self-Test"
+        - generic [ref=e42]:
+          - generic [ref=e43]: Framework
+          - combobox [ref=e44]:
+            - option "All Frameworks" [selected]
+            - option "Cypress"
+            - option "Jest"
+            - option "Playwright"
+      - generic [ref=e45]: Showing 27 of 27 results
+    - generic [ref=e46]:
+      - heading "📈 Historical Trends" [level=2] [ref=e47]
+      - paragraph [ref=e48]: No trend data available for the selected period.
+    - generic [ref=e49]:
+      - heading "📊 Visão Geral dos Testes" [level=2] [ref=e50]
+      - img [ref=e52]
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - heading "89" [level=3] [ref=e55]
+          - paragraph [ref=e56]: Total Tests
+        - generic [ref=e57]:
+          - heading "71" [level=3] [ref=e58]
+          - paragraph [ref=e59]: Passed
+        - generic [ref=e60]:
+          - heading "18" [level=3] [ref=e61]
+          - paragraph [ref=e62]: Failed
+        - generic [ref=e63]:
+          - heading "79.8%" [level=3] [ref=e64]
+          - paragraph [ref=e65]: Success Rate
+        - generic [ref=e66]:
+          - heading "6" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Test Suites
+        - generic [ref=e69]:
+          - heading "3" [level=3] [ref=e70]
+          - paragraph [ref=e71]: Frameworks
+        - generic [ref=e72]:
+          - heading "6" [level=3] [ref=e73]
+          - paragraph [ref=e74]: Categories
+    - generic [ref=e75]:
+      - heading "🔍 Failure Analysis" [level=2] [ref=e76]
+      - paragraph [ref=e77]: ✅ All tests passed! No failures to analyze.
+    - generic [ref=e78]:
+      - button "🚀 Trigger Pipeline" [ref=e79] [cursor=pointer]
+      - button "🔄 Rerun Failed Tests" [ref=e80] [cursor=pointer]
+    - generic [ref=e81]:
+      - heading "📋 Histórico de Execuções" [level=2] [ref=e82]
+      - table [ref=e83]:
+        - rowgroup [ref=e84]:
+          - row "Test Suite Framework Type Total ✅ Passed ❌ Failed % Success Category Date/Time" [ref=e85]:
+            - columnheader "Test Suite" [ref=e86]
+            - columnheader "Framework" [ref=e87]
+            - columnheader "Type" [ref=e88]
+            - columnheader "Total" [ref=e89]
+            - columnheader "✅ Passed" [ref=e90]
+            - columnheader "❌ Failed" [ref=e91]
+            - columnheader "% Success" [ref=e92]
+            - columnheader "Category" [ref=e93]
+            - columnheader "Date/Time" [ref=e94]
+        - rowgroup [ref=e95]:
+          - row "Dashboard UI Cypress E2E 12 12 0 100.0% Frontend 11/12/2025, 10:34" [ref=e96]:
+            - cell "Dashboard UI" [ref=e97]
+            - cell "Cypress" [ref=e98]
+            - cell "E2E" [ref=e99]
+            - cell "12" [ref=e100]
+            - cell "12" [ref=e101]
+            - cell "0" [ref=e102]
+            - cell "100.0%" [ref=e103]
+            - cell "Frontend" [ref=e104]
+            - cell "11/12/2025, 10:34" [ref=e105]
+          - row "Playwright Self-Test Playwright Functional 1 1 0 100.0% Internal QA 11/12/2025, 17:33" [ref=e106]:
+            - cell "Playwright Self-Test" [ref=e107]
+            - cell "Playwright" [ref=e108]
+            - cell "Functional" [ref=e109]
+            - cell "1" [ref=e110]
+            - cell "1" [ref=e111]
+            - cell "0" [ref=e112]
+            - cell "100.0%" [ref=e113]
+            - cell "Internal QA" [ref=e114]
+            - cell "11/12/2025, 17:33" [ref=e115]
+          - row "Playwright Self-Test Playwright Functional 1 1 0 100.0% Internal QA 11/12/2025, 17:33" [ref=e116]:
+            - cell "Playwright Self-Test" [ref=e117]
+            - cell "Playwright" [ref=e118]
+            - cell "Functional" [ref=e119]
+            - cell "1" [ref=e120]
+            - cell "1" [ref=e121]
+            - cell "0" [ref=e122]
+            - cell "100.0%" [ref=e123]
+            - cell "Internal QA" [ref=e124]
+            - cell "11/12/2025, 17:33" [ref=e125]
+          - row "Playwright Self-Test Playwright Functional 1 1 0 100.0% Internal QA 11/12/2025, 17:32" [ref=e126]:
+            - cell "Playwright Self-Test" [ref=e127]
+            - cell "Playwright" [ref=e128]
+            - cell "Functional" [ref=e129]
+            - cell "1" [ref=e130]
+            - cell "1" [ref=e131]
+            - cell "0" [ref=e132]
+            - cell "100.0%" [ref=e133]
+            - cell "Internal QA" [ref=e134]
+            - cell "11/12/2025, 17:32" [ref=e135]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 17:24" [ref=e136]:
+            - cell "Playwright Self-Test" [ref=e137]
+            - cell "Playwright" [ref=e138]
+            - cell "Functional" [ref=e139]
+            - cell "1" [ref=e140]
+            - cell "0" [ref=e141]
+            - cell "1" [ref=e142]
+            - cell "0.0%" [ref=e143]
+            - cell "Internal QA" [ref=e144]
+            - cell "11/12/2025, 17:24" [ref=e145]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 15:58" [ref=e146]:
+            - cell "Playwright Self-Test" [ref=e147]
+            - cell "Playwright" [ref=e148]
+            - cell "Functional" [ref=e149]
+            - cell "1" [ref=e150]
+            - cell "0" [ref=e151]
+            - cell "1" [ref=e152]
+            - cell "0.0%" [ref=e153]
+            - cell "Internal QA" [ref=e154]
+            - cell "11/12/2025, 15:58" [ref=e155]
+          - row "Playwright Self-Test Playwright Functional 1 0 0 0.0% Internal QA 11/12/2025, 15:51" [ref=e156]:
+            - cell "Playwright Self-Test" [ref=e157]
+            - cell "Playwright" [ref=e158]
+            - cell "Functional" [ref=e159]
+            - cell "1" [ref=e160]
+            - cell "0" [ref=e161]
+            - cell "0" [ref=e162]
+            - cell "0.0%" [ref=e163]
+            - cell "Internal QA" [ref=e164]
+            - cell "11/12/2025, 15:51" [ref=e165]
+          - row "Playwright Self-Test Playwright Functional 1 0 0 0.0% Internal QA 11/12/2025, 15:49" [ref=e166]:
+            - cell "Playwright Self-Test" [ref=e167]
+            - cell "Playwright" [ref=e168]
+            - cell "Functional" [ref=e169]
+            - cell "1" [ref=e170]
+            - cell "0" [ref=e171]
+            - cell "0" [ref=e172]
+            - cell "0.0%" [ref=e173]
+            - cell "Internal QA" [ref=e174]
+            - cell "11/12/2025, 15:49" [ref=e175]
+          - row "Playwright Self-Test Playwright Functional 1 1 0 100.0% Internal QA 11/12/2025, 14:48" [ref=e176]:
+            - cell "Playwright Self-Test" [ref=e177]
+            - cell "Playwright" [ref=e178]
+            - cell "Functional" [ref=e179]
+            - cell "1" [ref=e180]
+            - cell "1" [ref=e181]
+            - cell "0" [ref=e182]
+            - cell "100.0%" [ref=e183]
+            - cell "Internal QA" [ref=e184]
+            - cell "11/12/2025, 14:48" [ref=e185]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:46" [ref=e186]:
+            - cell "Playwright Self-Test" [ref=e187]
+            - cell "Playwright" [ref=e188]
+            - cell "Functional" [ref=e189]
+            - cell "1" [ref=e190]
+            - cell "0" [ref=e191]
+            - cell "1" [ref=e192]
+            - cell "0.0%" [ref=e193]
+            - cell "Internal QA" [ref=e194]
+            - cell "11/12/2025, 14:46" [ref=e195]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:44" [ref=e196]:
+            - cell "Playwright Self-Test" [ref=e197]
+            - cell "Playwright" [ref=e198]
+            - cell "Functional" [ref=e199]
+            - cell "1" [ref=e200]
+            - cell "0" [ref=e201]
+            - cell "1" [ref=e202]
+            - cell "0.0%" [ref=e203]
+            - cell "Internal QA" [ref=e204]
+            - cell "11/12/2025, 14:44" [ref=e205]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:43" [ref=e206]:
+            - cell "Playwright Self-Test" [ref=e207]
+            - cell "Playwright" [ref=e208]
+            - cell "Functional" [ref=e209]
+            - cell "1" [ref=e210]
+            - cell "0" [ref=e211]
+            - cell "1" [ref=e212]
+            - cell "0.0%" [ref=e213]
+            - cell "Internal QA" [ref=e214]
+            - cell "11/12/2025, 14:43" [ref=e215]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:41" [ref=e216]:
+            - cell "Playwright Self-Test" [ref=e217]
+            - cell "Playwright" [ref=e218]
+            - cell "Functional" [ref=e219]
+            - cell "1" [ref=e220]
+            - cell "0" [ref=e221]
+            - cell "1" [ref=e222]
+            - cell "0.0%" [ref=e223]
+            - cell "Internal QA" [ref=e224]
+            - cell "11/12/2025, 14:41" [ref=e225]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:40" [ref=e226]:
+            - cell "Playwright Self-Test" [ref=e227]
+            - cell "Playwright" [ref=e228]
+            - cell "Functional" [ref=e229]
+            - cell "1" [ref=e230]
+            - cell "0" [ref=e231]
+            - cell "1" [ref=e232]
+            - cell "0.0%" [ref=e233]
+            - cell "Internal QA" [ref=e234]
+            - cell "11/12/2025, 14:40" [ref=e235]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:36" [ref=e236]:
+            - cell "Playwright Self-Test" [ref=e237]
+            - cell "Playwright" [ref=e238]
+            - cell "Functional" [ref=e239]
+            - cell "1" [ref=e240]
+            - cell "0" [ref=e241]
+            - cell "1" [ref=e242]
+            - cell "0.0%" [ref=e243]
+            - cell "Internal QA" [ref=e244]
+            - cell "11/12/2025, 14:36" [ref=e245]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:34" [ref=e246]:
+            - cell "Playwright Self-Test" [ref=e247]
+            - cell "Playwright" [ref=e248]
+            - cell "Functional" [ref=e249]
+            - cell "1" [ref=e250]
+            - cell "0" [ref=e251]
+            - cell "1" [ref=e252]
+            - cell "0.0%" [ref=e253]
+            - cell "Internal QA" [ref=e254]
+            - cell "11/12/2025, 14:34" [ref=e255]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:34" [ref=e256]:
+            - cell "Playwright Self-Test" [ref=e257]
+            - cell "Playwright" [ref=e258]
+            - cell "Functional" [ref=e259]
+            - cell "1" [ref=e260]
+            - cell "0" [ref=e261]
+            - cell "1" [ref=e262]
+            - cell "0.0%" [ref=e263]
+            - cell "Internal QA" [ref=e264]
+            - cell "11/12/2025, 14:34" [ref=e265]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:32" [ref=e266]:
+            - cell "Playwright Self-Test" [ref=e267]
+            - cell "Playwright" [ref=e268]
+            - cell "Functional" [ref=e269]
+            - cell "1" [ref=e270]
+            - cell "0" [ref=e271]
+            - cell "1" [ref=e272]
+            - cell "0.0%" [ref=e273]
+            - cell "Internal QA" [ref=e274]
+            - cell "11/12/2025, 14:32" [ref=e275]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:27" [ref=e276]:
+            - cell "Playwright Self-Test" [ref=e277]
+            - cell "Playwright" [ref=e278]
+            - cell "Functional" [ref=e279]
+            - cell "1" [ref=e280]
+            - cell "0" [ref=e281]
+            - cell "1" [ref=e282]
+            - cell "0.0%" [ref=e283]
+            - cell "Internal QA" [ref=e284]
+            - cell "11/12/2025, 14:27" [ref=e285]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:12" [ref=e286]:
+            - cell "Playwright Self-Test" [ref=e287]
+            - cell "Playwright" [ref=e288]
+            - cell "Functional" [ref=e289]
+            - cell "1" [ref=e290]
+            - cell "0" [ref=e291]
+            - cell "1" [ref=e292]
+            - cell "0.0%" [ref=e293]
+            - cell "Internal QA" [ref=e294]
+            - cell "11/12/2025, 14:12" [ref=e295]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 14:04" [ref=e296]:
+            - cell "Playwright Self-Test" [ref=e297]
+            - cell "Playwright" [ref=e298]
+            - cell "Functional" [ref=e299]
+            - cell "1" [ref=e300]
+            - cell "0" [ref=e301]
+            - cell "1" [ref=e302]
+            - cell "0.0%" [ref=e303]
+            - cell "Internal QA" [ref=e304]
+            - cell "11/12/2025, 14:04" [ref=e305]
+          - row "Playwright Self-Test Playwright Functional 1 0 0 0.0% Internal QA 11/12/2025, 14:04" [ref=e306]:
+            - cell "Playwright Self-Test" [ref=e307]
+            - cell "Playwright" [ref=e308]
+            - cell "Functional" [ref=e309]
+            - cell "1" [ref=e310]
+            - cell "0" [ref=e311]
+            - cell "0" [ref=e312]
+            - cell "0.0%" [ref=e313]
+            - cell "Internal QA" [ref=e314]
+            - cell "11/12/2025, 14:04" [ref=e315]
+          - row "Playwright Self-Test Playwright Functional 1 0 1 0.0% Internal QA 11/12/2025, 13:48" [ref=e316]:
+            - cell "Playwright Self-Test" [ref=e317]
+            - cell "Playwright" [ref=e318]
+            - cell "Functional" [ref=e319]
+            - cell "1" [ref=e320]
+            - cell "0" [ref=e321]
+            - cell "1" [ref=e322]
+            - cell "0.0%" [ref=e323]
+            - cell "Internal QA" [ref=e324]
+            - cell "11/12/2025, 13:48" [ref=e325]
+          - row "API Integration Jest Integration 25 24 1 96.0% Backend 20/07/2025, 05:17" [ref=e326]:
+            - cell "API Integration" [ref=e327]
+            - cell "Jest" [ref=e328]
+            - cell "Integration" [ref=e329]
+            - cell "25" [ref=e330]
+            - cell "24" [ref=e331]
+            - cell "1" [ref=e332]
+            - cell "96.0%" [ref=e333]
+            - cell "Backend" [ref=e334]
+            - cell "20/07/2025, 05:17" [ref=e335]
+          - row "Checkout Flow Playwright E2E 8 7 1 87.5% Payment 30/11/2024, 17:44" [ref=e336]:
+            - cell "Checkout Flow" [ref=e337]
+            - cell "Playwright" [ref=e338]
+            - cell "E2E" [ref=e339]
+            - cell "8" [ref=e340]
+            - cell "7" [ref=e341]
+            - cell "1" [ref=e342]
+            - cell "87.5%" [ref=e343]
+            - cell "Payment" [ref=e344]
+            - cell "30/11/2024, 17:44" [ref=e345]
+          - row "Inventory Tests Cypress E2E 15 15 0 100.0% Products 13/04/2024, 06:10" [ref=e346]:
+            - cell "Inventory Tests" [ref=e347]
+            - cell "Cypress" [ref=e348]
+            - cell "E2E" [ref=e349]
+            - cell "15" [ref=e350]
+            - cell "15" [ref=e351]
+            - cell "0" [ref=e352]
+            - cell "100.0%" [ref=e353]
+            - cell "Products" [ref=e354]
+            - cell "13/04/2024, 06:10" [ref=e355]
+          - row "Login Tests Playwright E2E 10 9 1 90.0% Authentication 25/08/2023, 18:37" [ref=e356]:
+            - cell "Login Tests" [ref=e357]
+            - cell "Playwright" [ref=e358]
+            - cell "E2E" [ref=e359]
+            - cell "10" [ref=e360]
+            - cell "9" [ref=e361]
+            - cell "1" [ref=e362]
+            - cell "90.0%" [ref=e363]
+            - cell "Authentication" [ref=e364]
+            - cell "25/08/2023, 18:37" [ref=e365]
+  - contentinfo [ref=e366]:
+    - paragraph [ref=e367]: "Total de execuções: 27 | Última atualização: 11/12/2025, 14:37:00"
+```

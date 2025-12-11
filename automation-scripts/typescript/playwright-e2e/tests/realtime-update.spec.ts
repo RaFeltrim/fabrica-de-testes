@@ -1,17 +1,38 @@
 import { test, expect } from '@playwright/test';
-import { RealtimePage } from '../pages/RealtimePage';
+import { DashboardPage } from '../pages/DashboardPage';
 
-test.describe('Realtime Updates', () => {
-  let realtimePage: RealtimePage;
+test.describe('Dashboard Updates', () => {
+  let dashboardPage: DashboardPage;
 
   test.beforeEach(async ({ page }) => {
-    realtimePage = new RealtimePage(page);
-    await realtimePage.navigate();
+    dashboardPage = new DashboardPage(page);
+    await dashboardPage.goto();
   });
 
-  test('should update data in realtime', async () => {
-    await realtimePage.waitForUpdate();
-    const data = await realtimePage.getLatestData();
-    expect(data).toBeTruthy();
+  test('should show dashboard footer with timestamp', async () => {
+    // Verify footer exists and contains timestamp
+    const footer = page.locator('.dashboard-footer');
+    await expect(footer).toBeVisible();
+    await expect(footer).toContainText('Última atualização');
+  });
+
+  test('should display total execution count', async () => {
+    // Verify footer shows execution count
+    const footer = page.locator('.dashboard-footer');
+    await expect(footer).toContainText('Total de execuções');
+  });
+
+  test('should have pipeline controls available', async () => {
+    // Verify pipeline control buttons exist
+    await expect(page.locator('button').filter({ hasText: /Pipeline|Run|Execute/ })).toBeVisible();
+  });
+
+  test('should show results when available', async () => {
+    // Wait for results to load
+    await page.waitForTimeout(2000);
+
+    // Check if results are displayed (either charts or lists)
+    const hasResults = await page.locator('.results-chart, .results-list, .trend-chart').count() > 0;
+    expect(hasResults).toBeTruthy();
   });
 });

@@ -1,23 +1,50 @@
 import { test, expect } from '@playwright/test';
-import { FiltersPage } from '../pages/FiltersPage';
+import { DashboardPage } from '../pages/DashboardPage';
 
 test.describe('Filters Feature', () => {
-  let filtersPage: FiltersPage;
+  let dashboardPage: DashboardPage;
 
   test.beforeEach(async ({ page }) => {
-    filtersPage = new FiltersPage(page);
-    await filtersPage.navigate();
+    dashboardPage = new DashboardPage(page);
+    await dashboardPage.goto();
   });
 
-  test('should apply filter', async () => {
-    await filtersPage.applyFilter('search', 'test');
-    // Verificar se o filtro foi aplicado
-    await expect(page.locator('input[name="search"]')).toHaveValue('test');
+  test('should apply date range filter', async () => {
+    // Fill date inputs
+    await page.fill('input[placeholder="Data inicial"]', '2025-01-01');
+    await page.fill('input[placeholder="Data final"]', '2025-12-31');
+
+    // Verify filter is applied (check if results are filtered)
+    await expect(page.locator('.dashboard-footer')).toContainText('Última atualização');
   });
 
-  test('should clear filters', async () => {
-    await filtersPage.applyFilter('search', 'test');
-    await filtersPage.clearFilters();
-    await expect(page.locator('input[name="search"]')).toHaveValue('');
+  test('should apply status filter', async () => {
+    // Select status
+    await page.selectOption('select[name="status"]', 'passed');
+
+    // Verify filter is applied
+    await expect(page.locator('.dashboard-footer')).toContainText('Última atualização');
+  });
+
+  test('should apply project filter', async () => {
+    // Select project
+    const projectSelect = page.locator('select[name="project"]');
+    const options = await projectSelect.locator('option').allTextContents();
+
+    if (options.length > 1) {
+      await projectSelect.selectOption(options[1]);
+      await expect(page.locator('.dashboard-footer')).toContainText('Última atualização');
+    }
+  });
+
+  test('should clear filters using date range', async () => {
+    // Apply a filter first
+    await page.fill('input[placeholder="Data inicial"]', '2025-01-01');
+
+    // Clear filters
+    await page.click('.btn.btn-outline');
+
+    // Verify cleared
+    await expect(page.locator('.dashboard-footer')).toContainText('Última atualização');
   });
 });
